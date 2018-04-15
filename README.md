@@ -1,7 +1,9 @@
-# wordpress-docker-quickstart
-Quickstart template for hosting WordPress web-app using Docker Compose.
+# docker-selenium-wordpress
+Quickstart template for hosting WordPress web-app and testing them with Selenium Grid, all using Docker Compose.
 
-Follows [this article](https://docs.docker.com/compose/wordpress/).
+Refer to the following articles for more detail.
+- [Quickstart guide for Compose and WordPress](https://docs.docker.com/compose/wordpress/).
+- [The docker-selenium Github repo](https://github.com/SeleniumHQ/docker-selenium).
 
 # Instructions
 
@@ -16,12 +18,12 @@ $ pip install docker-compose
 
 Detailed instructions on installing Docker Compose can be found [here](https://docs.docker.com/compose/install/).
 
-## 2. Build and run the project.
+## 2. Build and run the the Wordpress Compose.
 
-run `docker-compose up -d` from your project directory. The output would be something like the following.
+Run `docker-compose up -f wordpress.yaml -d` from your project directory. The output would be something like the following.
 
 ```console
-$ sudo docker-compose up -d
+$ sudo docker-compose up -f wordpress.yaml -d
 Creating network "wordpressdockerquickstart_default" with the default driver
 Creating volume "wordpressdockerquickstart_dbdata" with default driver
 Pulling db (mysql:5.7)...
@@ -43,3 +45,29 @@ Creating wordpressdockerquickstart_wordpress_1 ... done
 ```
 
 Once it's done, you can open WordPress at `http://YOUR_IP:8000`. Afterwords, follow the famous five-minute installation of WordPress to boot up your site.
+
+## 3. Build and run the Selenium Grid Compose.
+
+Run the following from your project directory. 
+```console
+$ sudo docker-compose -f selenium-grid.yaml up -d
+```
+
+The output would be similar as of step 2. Once it's done, you can access the Selenium Grid console at `http://localhost:4444/grid/console`.
+
+## 4. Run the tests.
+
+Install the Python3 selenium bindings.
+```console
+$ pip3 install selenium
+```
+
+Then, run the tests as
+```console
+$ python3 -m unittest
+..
+----------------------------------------------------------------------
+Ran 2 tests in 7.686s
+
+OK
+```
