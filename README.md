@@ -1,5 +1,5 @@
-# docker-selenium-wordpress
-Quickstart template for hosting WordPress web-app and testing them with Selenium Grid, all using Docker Compose.
+# docker-wordpress-selenium
+Quickstart template for hosting WordPress web-app and testing it with Selenium Grid, all using Docker Compose.
 
 Refer to the following articles for more detail.
 - [Quickstart guide for Compose and WordPress](https://docs.docker.com/compose/wordpress/).
